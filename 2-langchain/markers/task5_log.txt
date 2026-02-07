@@ -1,0 +1,34 @@
+🎯 Task 5: Chain Composition with |
+==================================================
+
+⛓️ Chain 1: Simple Analysis
+==================================================
+📝 Input: 'Analyze blockchain'
+✅ Output: Blockchain is a decentralized and transparent digital ledger technology that enhances security and trust by recording transactions across multiple nodes. Its advantages include increased security, reduced fraud, and improved transparency, while drawbacks involve scalability challenges, high energy consumption, and potential regulatory uncertainties. Overall, blockchain offers innovative solutions but requires careful consideration of its limitations.
+
+⛓️ Chain 2: List Generation with Parser
+==================================================
+📝 Input: 'List use cases for blockchain'
+✅ Output: ['Supply chain management', 'digital identity verification', 'and secure voting systems']
+✅ Type: <class 'list'> - Python list!
+
+🎉 Complete Pipeline Example
+==================================================
+Technology: artificial intelligence
+
+1️⃣ Analysis:
+   Artificial intelligence (AI) offers significant advantages such as automating complex tasks, enhancing efficiency, and enabling innovative solutions across various industries. However, it also presents challenges like potential job displacement, ethical concerns, and biases embedded within algorithms. Balancing AI's benefits with its risks is essential for responsible development and deployment.
+
+2️⃣ Use Cases:
+   1. Medical diagnosis
+   2. autonomous vehicles
+   3. personalized marketing
+
+💡 Chain Composition Magic:
+  ✓ The pipe | operator connects everything
+  ✓ prompt | llm | parser = complete pipeline
+  ✓ Different parsers = different output formats
+  ✓ Same LLM, infinite possibilities!
+
+✅ Task 5 completed! You've mastered LangChain chains!
+🏆 You can now build any AI pipeline with the | operator!

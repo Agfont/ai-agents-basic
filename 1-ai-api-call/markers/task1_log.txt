@@ -1,0 +1,3 @@
+✅ Step 1 Complete: Libraries imported!
+- openai: For making API calls
+- os: For accessing environment variables

@@ -1,0 +1,58 @@
+🎯 Task 4: Chain-of-Thought Prompting
+==================================================
+
+📝 Part 1: Direct Approach (Without Chain-of-Thought)
+----------------------------------------
+❌ Direct prompt: Fix our data retention policy to comply with GDPR.
+
+Direct response preview: Certainly! Here is a revised data retention policy aligned with GDPR requirements:
+
+---
+
+**Data Retention Policy**
+
+**Purpose**
+
+This policy outlines how [Your Company Name] collects, processes, and r...
+Problem: Lacks structure and may miss important details!
+
+📝 Part 2: Chain-of-Thought Approach
+----------------------------------------
+🧠 Reasoning steps defined:
+Step 1: Review current GDPR requirements for data retention
+Step 2: Identify gaps in our existing policy
+Step 3: Research industry best practices
+Step 4: Draft specific recommendations
+Step 5: Create implementation timeline
+
+🔄 Applying Chain-of-Thought Reasoning
+----------------------------------------
+
+📥 Chain-of-Thought Response:
+Certainly! Let's work through each step systematically to ensure your data retention policy complies with GDPR.
+
+---
+
+**Step 1: Review current GDPR requirements for data retention**
+
+- **Principle of Data Minimization:** Only collect and retain data necessary for the purpose.
+- **Storage Limitation:** Personal data should not be kept longer than necessary for the purpose it was collected.
+- **Right to Erasure:** Data subjects can request deletion of their data.
+- **Transparency:** Clear communic...
+
+📊 Comparison Analysis:
+Direct response length: 2385 characters
+CoT response length: 4035 characters
+
+✅ Chain-of-Thought Benefits:
+  ✓ Structured approach: True
+  ✓ Thorough analysis: True
+  ✓ Clear recommendations: True
+
+💡 Chain-of-Thought Best Practices:
+  ✓ Break complex problems into steps
+  ✓ Guide the AI's thinking process
+  ✓ Ensure comprehensive analysis
+  ✓ Get detailed, reasoned responses
+
+✅ Task 4 completed! Chain-of-thought prompting mastered!

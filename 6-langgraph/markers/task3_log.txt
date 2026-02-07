@@ -1,0 +1,24 @@
+🔗 Task 3: Connecting Nodes with Edges
+
+Building your first graph:
+
+Compiling graph...
+✅ Graph compiled successfully!
+
+Running the graph:
+  🔄 Processing in greet_node...
+  🔄 Processing in enhance_node...
+
+Final result: {'name': 'Bob', 'greeting': 'Hello, Bob! Welcome to LangGraph!'}
+
+============================================================
+💡 KEY CONCEPTS:
+- StateGraph: Container for your workflow
+- add_node: Registers a function as a node
+- set_entry_point: Where execution starts
+- add_edge: Connects nodes (A → B)
+- END: Special marker for final node
+- compile: Converts graph to executable app
+============================================================
+
+✅ Task 3 completed!

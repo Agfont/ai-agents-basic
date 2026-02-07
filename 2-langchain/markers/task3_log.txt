@@ -1,0 +1,19 @@
+🎯 Task 3: Dynamic Prompt Templates
+==================================================
+
+📝 Creating a Reusable Template
+==================================================
+
+🤖 Testing Template with AI
+==================================================
+📝 Sending to AI: Explain artificial intelligence in exactly 5 words
+
+🤖 AI Response: Machines mimicking human cognitive abilities.
+
+💡 Template Benefits:
+  ✓ ONE template, INFINITE uses
+  ✓ Variables make it dynamic
+  ✓ Consistent structure across all prompts
+  ✓ Change inputs, not code!
+
+✅ Task 3 completed! One template, endless possibilities!

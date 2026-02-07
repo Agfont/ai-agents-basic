@@ -1,0 +1,30 @@
+🎯 Task 3: Few-Shot Prompting
+==================================================
+
+📝 Creating Few-Shot Examples
+----------------------------------------
+📚 Examples loaded:
+  Example 1: refund request → I understand you'd like a refund. Let me check you...
+  Example 2: shipping delay → I apologize for the shipping delay. Let me track y...
+  Example 3: password reset → I'll help you reset your password. For security, I...
+
+🔄 Testing Few-Shot Prompting
+----------------------------------------
+📤 New customer issue: account locked
+Using few-shot learning from 3 examples...
+
+📥 AI Response: I understand your account is locked. To assist you, I'll verify your details and initiate the unlocking process. Please allow a moment, and I'll resolve this for you promptly.
+
+📊 Response Analysis:
+  ✓ Shows empathy: True
+  ✓ Takes action: True
+  ✓ Provides timeline: False
+  Quality Score: 2/3
+
+💡 Few-Shot Advantages:
+  ✓ Learns your specific tone and style
+  ✓ Maintains consistency across responses
+  ✓ Perfect for customer service
+  ✓ Reduces training time
+
+✅ Task 3 completed! Few-shot prompting mastered!

@@ -1,0 +1,33 @@
+🔀 Task 5: Conditional Routing
+
+Building conditional routing graph:
+
+Graph compiled! Testing routing...
+
+============================================================
+TEST 1: Short query
+============================================================
+  🔄 Analyzing query length...
+  🔄 Processing quick response...
+Query: 'What is Python?'
+Route taken: short → quick
+Response: Quick answer: What is Python?...
+
+============================================================
+TEST 2: Long query
+============================================================
+  🔄 Analyzing query length...
+  🔄 Processing detailed analysis...
+Query: 'Explain how LangGraph conditional routing works in detail'
+Route taken: long → detailed
+Response: Detailed analysis: Let me thoroughly explain 'Explain how LangGraph conditional routing works in detail'
+
+============================================================
+💡 KEY CONCEPTS:
+- Router functions examine state
+- Return string matching node name
+- add_conditional_edges maps returns to nodes
+- Different inputs → Different paths
+============================================================
+
+✅ Task 5 completed!

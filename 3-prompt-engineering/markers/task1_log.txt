@@ -1,0 +1,31 @@
+🎯 Task 1: Zero-Shot Prompting
+==================================================
+
+📝 Part 1: The Problem with Vague Prompts
+----------------------------------------
+❌ Vague prompt: write a policy
+
+Vague response preview: Certainly! Could you please specify the type of policy you need? For example, is it an HR policy, IT...
+Problem: Too generic, not useful for our company!
+
+📝 Part 2: Specific Zero-Shot Prompting
+----------------------------------------
+✅ Specific prompt: Write a 200-word data privacy policy for European ...
+
+Specific response preview: **Data Privacy Policy for European Customers**
+
+We are committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR). Your data is processed lawfully, fai...
+Success: Clear, actionable, company-specific!
+
+📊 Comparison Results:
+Vague response length: 223 characters
+Specific response length: 1232 characters
+Improvement: 452% more focused!
+
+💡 Zero-Shot Best Practices:
+  ✓ Be specific about the task
+  ✓ Include constraints (word count, format)
+  ✓ Define the context (European, GDPR)
+  ✓ Specify requirements (retention, rights)
+
+✅ Task 1 completed! Zero-shot prompting mastered!

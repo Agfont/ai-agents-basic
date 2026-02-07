@@ -1,0 +1,25 @@
+🔷 Task 2: Creating Your First Node
+
+Testing nodes manually:
+
+Initial state: {'name': 'Alice', 'greeting': ''}
+
+Calling greet_node...
+  🔄 Processing in greet_node...
+Node returned: {'greeting': 'Hello, Alice!'}
+State after greet: {'name': 'Alice', 'greeting': 'Hello, Alice!'}
+
+Calling enhance_node...
+  🔄 Processing in enhance_node...
+Node returned: {'greeting': 'Hello, Alice! How are you?'}
+Final state: {'name': 'Alice', 'greeting': 'Hello, Alice! How are you?'}
+
+============================================================
+💡 KEY CONCEPTS:
+- Nodes are Python functions that take state and return updates
+- We're testing functions here WITHOUT a graph
+- In Task 3, we'll add these functions to a StateGraph
+- LangGraph will handle state merging automatically in a real graph
+============================================================
+
+✅ Task 2 completed!

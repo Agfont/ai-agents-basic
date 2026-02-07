@@ -1,0 +1,47 @@
+📡 Task 1: Understanding MCP Basics
+
+
+============================================================
+TESTING MCP TOOLS:
+============================================================
+
+Test 1: Addition
+  🔧 Tool 'add' called with a=5, b=3
+  ➕ Result: 8
+Response: 8
+
+Test 2: Multiplication
+  🔧 Tool 'multiply' called with a=4, b=7
+  ✖️ Result: 28
+Response: 28
+
+Test 3: Division
+  🔧 Tool 'divide' called with a=10, b=2
+  ➗ Result: 5.0
+Response: 10 ÷ 2 = 5.0
+
+Test 4: Division by zero
+  🔧 Tool 'divide' called with a=5, b=0
+  ❌ Error: Division by zero!
+Response: Error: Cannot divide by zero
+
+============================================================
+💡 KEY CONCEPTS:
+- FastMCP creates MCP servers easily
+- @mcp.tool() decorator exposes functions
+- Tools have type hints for parameters
+- Servers can run via stdio, SSE, or HTTP
+- AI models call tools through MCP protocol
+============================================================
+
+✅ Task 1 complete! MCP tools tested successfully.
+
+============================================================
+🚀 STARTING MCP SERVER
+============================================================
+The calculator MCP server is now starting...
+Keep this terminal open - the server will run continuously.
+Use Ctrl+C to stop the server when you're done.
+
+Server ready! Waiting for client connections...
+============================================================

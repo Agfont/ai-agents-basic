@@ -1,0 +1,65 @@
+🎯 Task 5: Prompting Technique Comparison
+==================================================
+🎯 Test Problem: Create an employee remote work policy
+Testing all 4 prompting techniques...
+
+1️⃣ Zero-Shot Prompting
+----------------------------------------
+Response length: 2422 characters
+Preview: **Employee Remote Work Policy**
+
+**Purpose**  
+This policy outlines the guidelines and expectations ...
+
+2️⃣ One-Shot Prompting
+----------------------------------------
+Response length: 879 characters
+Preview: Remote Work Policy
+
+1. Eligibility: All full-time employees who have completed their probation perio...
+
+3️⃣ Few-Shot Prompting
+----------------------------------------
+Response length: 594 characters
+Preview: remote work policy:
+1. eligibility: All full-time employees after 3 months of employment
+2. work hou...
+
+4️⃣ Chain-of-Thought Prompting
+----------------------------------------
+Response length: 3747 characters
+Preview: Certainly! Here's a step-by-step approach to creating a comprehensive employee remote work policy ba...
+
+📊 Technique Comparison Results
+==================================================
+
+ZERO_SHOT:
+  Length: 2422 characters
+  Has structure: False
+  Specificity: True
+
+ONE_SHOT:
+  Length: 879 characters
+  Has structure: True
+  Specificity: True
+
+FEW_SHOT:
+  Length: 594 characters
+  Has structure: True
+  Specificity: True
+
+CHAIN_OF_THOUGHT:
+  Length: 3747 characters
+  Has structure: True
+  Specificity: True
+
+🏆 Most Detailed: chain_of_thought (3747 characters)
+
+💡 When to Use Each Technique:
+  ✓ Zero-Shot: Quick, general responses
+  ✓ One-Shot: When you need specific formatting
+  ✓ Few-Shot: For consistent style across multiple outputs
+  ✓ Chain-of-Thought: For complex, multi-step problems
+
+✅ Task 5 completed! You've mastered all prompting techniques!
+🎉 Congratulations on completing the Prompt Engineering lab!

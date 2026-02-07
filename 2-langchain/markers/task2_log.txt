@@ -1,0 +1,19 @@
+🎯 Task 2: Multi-Model Support with LangChain
+==================================================
+
+🌐 Initialize Multiple AI Providers
+==================================================
+Setting up OpenAI GPT-4.1-nano...
+
+✅ All models initialized! Now let's compare them...
+
+Model Comparison - Same Prompt, Different Models
+==================================================
+📝 Prompt: 'Explain cloud computing in one sentence'
+
+OpenAI: Cloud computing is the delivery of computing services—such as storage, processing, and applications—...
+
+💡 Same code, different providers - perfect for A/B testing!
+
+✅ Task 2 completed! You can now switch models at will!
+🎉 You tested 3 different AI providers with identical code!

@@ -1,0 +1,51 @@
+🌐 Task 3: Multiple MCP Servers
+
+Configuring multiple MCP servers:
+
+Starting Multi-Server MCP Orchestration...
+This demonstrates how a single agent can use multiple MCP servers
+
+📦 Loading tools from multiple servers...
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+✅ Loaded 8 tools from MCP servers
+
+============================================================
+TESTING MULTI-SERVER ORCHESTRATION:
+============================================================
+
+Test 1: Calculator MCP
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Response: 42 plus 58 equals 100.
+
+Test 2: Weather MCP
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Response: The weather in London is foggy with a temperature of 12°C, humidity at 73%, and wind speed of 10 km/h.
+
+Test 3: Complex Math
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Response: The sum of 3 and 5 is 8, and when multiplied by 12, the result is 96.
+
+Test 4: Weather in Multiple Cities
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Response: The weather in Tokyo is warmer and more humid compared to New York, which has clear skies and a temperature of 15°C.
+
+Test 5: Mixed Query
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Response: If the temperature in Paris rises by 5 degrees from 20°C, it will be 25°C.
+
+============================================================
+💡 KEY CONCEPTS:
+- MultiServerMCPClient manages multiple MCP servers
+- Each server exposes different tools
+- Agent automatically selects appropriate tools
+- Seamless orchestration across servers
+- Extensible to many servers and domains
+============================================================

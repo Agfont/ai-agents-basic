@@ -1,0 +1,37 @@
+🎯 Task 2: One-Shot Prompting
+==================================================
+
+📝 Creating One-Shot Template with Example
+----------------------------------------
+📋 Example provided:
+REFUND POLICY
+1. Eligibility: Within 30 days of purchase
+2. Conditions: Product unused and in original packaging
+3. Process: Submit request via support@company.com
+4. Timeline: Refund processed within 5-7 business days
+5. Exceptions: Digital products and custom orders non-refundable
+
+🔄 Testing One-Shot Prompting
+----------------------------------------
+📤 Sending one-shot prompt for: remote work policy
+
+📥 Generated Policy:
+REMOTE WORK POLICY  
+1. Eligibility: Employees are eligible for remote work upon manager approval and based on job responsibilities.  
+2. Conditions: Employees must maintain productivity, attend scheduled meetings, and adhere to company standards while working remotely.  
+3. Process: Submit a remote work request via hr@company.com for approval at least two weeks in advance.  
+4. Timeline: Remote work arrangements are reviewed and approved within 3 business days of submission.  
+5. Exceptions: Roles requiring physical presence or access to on-site equipment are not eligible for remote work.
+
+✅ Format Verification:
+  ✓ Follows the exact format of our example!
+  ✓ Numbered sections maintained
+  ✓ Consistent structure achieved
+
+💡 One-Shot Benefits:
+  ✓ Ensures format consistency
+  ✓ Teaches style through example
+  ✓ Perfect for policy documents
+  ✓ Maintains company standards
+
+✅ Task 2 completed! One-shot prompting mastered!

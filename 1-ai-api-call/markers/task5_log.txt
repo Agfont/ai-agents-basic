@@ -1,0 +1,15 @@
+📊 Token Usage Report:
+==================================================
+  Your question used: 19 tokens
+  AI's response used: 322 tokens
+  Total tokens billed: 341 tokens
+==================================================
+
+💰 Cost Breakdown for This Call:
+--------------------------------------------------
+  Input cost:  $0.000015 (19 tokens)
+  Output cost: $0.001030 (322 tokens)
+  TOTAL COST:  $0.001046
+--------------------------------------------------
+
+✅ Task 5 completed! You now understand tokens and costs!

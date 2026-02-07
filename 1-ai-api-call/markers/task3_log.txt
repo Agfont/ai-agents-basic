@@ -1,0 +1,5 @@
+✅ API Call Successful!
+
+🤖 AI said: Hello! I’m ChatGPT, an AI language model developed by OpenAI. I’m here to helpanswer your questions, assist with tasks, or have a friendly conversation. How can I assist you today?
+
+📊 Total tokens used: 55

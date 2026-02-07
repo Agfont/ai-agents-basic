@@ -1,0 +1,39 @@
+🧮 Task 6: Simple Calculator Tool
+
+Building calculator graph:
+
+Graph compiled! Testing calculator...
+
+============================================================
+TEST 1: Math query
+============================================================
+  🔄 Analyzing query type...
+  ✅ Detected mathematical query
+  🔄 Processing mathematical query...
+  📊 Invoking calculator tool...
+  🔧 Tool called: calculator_tool
+  📝 Expression: 25 + 17
+  ✅ Calculator returned result
+Query: 'What is 25 plus 17?'
+Result: Answer: 42
+
+============================================================
+TEST 2: Non-math query
+============================================================
+  🔄 Analyzing query type...
+  ℹ️ Non-mathematical query
+  🔄 Processing non-mathematical query...
+  ℹ️ Providing general response
+Query: 'What is the weather today?'
+Result: This is not a math question. Please ask a calculation!
+
+============================================================
+💡 KEY CONCEPTS:
+- Tools are structured functions with @tool decorator
+- bind_tools() attaches tools to LLMs
+- LLM decides when to use tools based on the query
+- Routing directs queries to appropriate tool nodes
+- Conditional edges enable dynamic tool selection
+============================================================
+
+✅ Task 6 completed!

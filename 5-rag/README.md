@@ -87,9 +87,7 @@ User Question → Embedding → Vector Search → Retrieve Chunks
 
 ### 1. Environment Setup
 ```bash
-# Activate virtual environment
-source venv/bin/activate
-
+source ../.venv/bin/activate
 # Verify environment
 python3 verify_environment.py
 ```

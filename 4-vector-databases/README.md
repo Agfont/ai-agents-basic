@@ -20,9 +20,7 @@ By completing this lab, you will:
 ### 1. Setup Environment
 
 ```bash
-# Create and activate virtual environment
-python3 -m venv venv && source venv/bin/activate
-
+source ../.venv/bin/activate
 # Install required packages
 python -m pip install -r requirements.txt
 

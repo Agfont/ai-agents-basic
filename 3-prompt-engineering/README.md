@@ -70,10 +70,10 @@ prompt-engineering/assets/
 ### Quick Start
 
 1. **Verify Environment**
-   ```bash
-   source venv/bin/activate
+```bash
+   source ../.venv/bin/activate
    python verify_environment.py
-   ```
+```
 
 2. **Complete Tasks in Order**
    - Each task builds on the previous one
@@ -81,13 +81,13 @@ prompt-engineering/assets/
    - Comments show the expected answers
 
 3. **Run Each Task**
-   ```bash
+```bash
    python task_1_zero_shot.py
    python task_2_one_shot.py
    python task_3_few_shot.py
    python task_4_chain_of_thought.py
    python task_5_comparison.py
-   ```
+```
 
 ## 💡 Technique Comparison Guide
 

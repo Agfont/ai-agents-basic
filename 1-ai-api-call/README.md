@@ -79,8 +79,11 @@ Understand the economics - tokens = money
 
 ### Step 1: Verify Your Environment
 ```bash
-python3 python3 -m venv .venv
+cd ai-agents-basics
+python3 -m venv .venv
+cd 1-ai-api-call
 source ../.venv/bin/activate
+pip install python-dotenv openai
 python3 verify_environment.py
 ```
 

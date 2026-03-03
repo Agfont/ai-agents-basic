@@ -196,9 +196,7 @@ Task 7: Research Agent → Multiple tools
 
 ### 1. Environment Setup
 ```bash
-# Activate virtual environment
-cd /root && source venv/bin/activate
-
+source ../.venv/bin/activate
 # Install dependencies
 pip install langgraph langchain langchain-openai ddgs bs4
 

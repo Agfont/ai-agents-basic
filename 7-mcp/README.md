@@ -111,9 +111,7 @@ Examples:
 
 ### 1. Environment Setup
 ```bash
-# Activate virtual environment
-source .venv/bin/activate
-
+source ../.venv/bin/activate
 # Install dependencies
 pip install langgraph langchain langchain-openai langchain-mcp-adapters mcp
 

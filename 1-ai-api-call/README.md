@@ -100,7 +100,7 @@ Each TODO tells you EXACTLY what to type!
 ### Step 3: Run Your Code
 Start with Task 1:
 ```bash
-python3 task_1_import_explained.py
+python3 task_1_import_setup.py
 ```
 
 Then continue with Tasks 2, 3, 4, and 5 in order.

@@ -133,3 +133,9 @@ By completing this lab, you'll:
 - ✅ Build complete AI systems with chain composition
 
 Ready to master LangChain fundamentals! 🚀
+
+### Step 1: Verify Your Environment
+```bash
+source ../.venv/bin/activate
+pip install langchain langchain_openai
+```

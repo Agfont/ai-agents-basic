@@ -1,0 +1,182 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --bg-0: #0e1f1a;
+        --bg-1: #19352d;
+        --bg-2: #f2efe4;
+        --ink: #0f1714;
+        --ink-soft: #4f5f59;
+        --card: rgba(255, 255, 255, 0.86);
+        --accent: #ff7f50;
+        --accent-deep: #d74f1c;
+        --ok: #0f8b6b;
+        --border: rgba(18, 38, 32, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 20% 20%, #f7c58f 0, transparent 33%),
+          radial-gradient(circle at 85% 0%, #6ec8a5 0, transparent 28%),
+          linear-gradient(135deg, var(--bg-0), var(--bg-1) 36%, #2d5f51 63%, #6ea291);
+        background-attachment: fixed;
+      }
+
+      main {
+        width: min(1100px, 94vw);
+        margin: 0 auto;
+        padding: 2rem 0 3rem;
+      }
+
+      .hero {
+        color: #f7fff7;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: linear-gradient(140deg, rgba(26, 52, 45, 0.92), rgba(54, 95, 83, 0.78));
+        border-radius: 1.2rem;
+        padding: 1.2rem 1.4rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 20px 45px rgba(5, 14, 11, 0.25);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.4rem, 3.8vw, 2.45rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .subtitle {
+        margin-top: 0.55rem;
+        max-width: 70ch;
+        color: rgba(241, 255, 250, 0.9);
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 10px 28px rgba(13, 22, 19, 0.12);
+        backdrop-filter: blur(8px);
+      }
+
+      .mono {
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .muted {
+        color: var(--ink-soft);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .chip {
+        border-radius: 999px;
+        border: 1px solid rgba(25, 53, 45, 0.2);
+        padding: 0.22rem 0.6rem;
+        font-size: 0.84rem;
+        background: #f7f2e8;
+      }
+
+      .link-button,
+      button {
+        appearance: none;
+        border: 0;
+        border-radius: 0.7rem;
+        padding: 0.58rem 0.8rem;
+        font-family: inherit;
+        font-size: 0.95rem;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(160deg, var(--accent), var(--accent-deep));
+        transition: transform 130ms ease, box-shadow 130ms ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .link-button:hover,
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 18px rgba(124, 42, 18, 0.22);
+      }
+
+      .link-button.secondary,
+      button.secondary {
+        background: linear-gradient(160deg, #2d6c5b, #1f4b3f);
+      }
+
+      .ok {
+        color: var(--ok);
+        font-weight: 600;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: #0e1614;
+        color: #d7efe5;
+        border-radius: 0.85rem;
+        border: 1px solid rgba(223, 240, 232, 0.18);
+        padding: 0.8rem;
+        max-height: 420px;
+        overflow: auto;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          padding-top: 1rem;
+        }
+
+        .hero {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>{title}</h1>
+        {subtitle && <p class="subtitle">{subtitle}</p>}
+      </section>
+      <slot />
+    </main>
+  </body>
+</html>

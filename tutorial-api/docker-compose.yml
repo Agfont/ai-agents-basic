@@ -1,0 +1,14 @@
+services:
+  tutorial-api:
+    build:
+      context: ..
+      dockerfile: tutorial-api/Dockerfile
+    image: ai-agents-basic/tutorial-api:latest
+    ports:
+      - "5050:5050"
+    environment:
+      FLASK_RUN_PORT: "5050"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_API_BASE: ${OPENAI_API_BASE:-https://api.openai.com/v1}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-nano}
+    restart: unless-stopped

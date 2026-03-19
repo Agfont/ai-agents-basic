@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLocalLabs } from "../../lib/local-index";
+
+export function getStaticPaths() {
+  return getLocalLabs().map((lab) => ({
+    params: { lab: lab.slug }
+  }));
+}
+
+const { lab } = Astro.params;
+const apiBase = (import.meta.env.PUBLIC_API_BASE_URL || "http://localhost:5050").replace(/\/$/, "");
+---
+
+<BaseLayout
+  title={`Lab: ${lab}`}
+  subtitle="This page maps directly to a lab directory. Each task calls Flask endpoints to fetch source, check completion markers, and execute scripts."
+>
+  <section class="card">
+    <p>
+      <a class="link-button secondary" href="/">Back to labs</a>
+    </p>
+    <div class="chips" style="margin-bottom:.8rem;">
+      <span class="chip mono">{lab}</span>
+      <span class="chip">Directory-backed route</span>
+    </div>
+    <h2 style="margin-top:0;">Tasks</h2>
+    <div id="task-grid" class="grid">
+      <p class="muted">Loading tasks for {lab}...</p>
+    </div>
+  </section>
+
+  <script define:vars={{ lab, apiBase }}>
+    const taskGrid = document.getElementById("task-grid");
+
+    async function loadLab() {
+      if (!taskGrid) return;
+      try {
+        const response = await fetch(`${apiBase}/api/labs/${lab}`);
+        if (!response.ok) {
+          throw new Error(`Request failed with ${response.status}`);
+        }
+        const payload = await response.json();
+        const tasks = Array.isArray(payload.tasks) ? payload.tasks : [];
+        if (tasks.length === 0) {
+          taskGrid.innerHTML = "<p class='muted'>No task files discovered in this lab.</p>";
+          return;
+        }
+
+        taskGrid.innerHTML = tasks
+          .map(
+            (task) => `
+              <article class='card'>
+                <div class='chips'>
+                  <span class='chip mono'>${task.filename}</span>
+                  <span class='chip ${task.marker_complete ? "ok" : ""}'>${task.marker_complete ? "Complete" : "Not complete"}</span>
+                </div>
+                <h3 style='margin:.6rem 0;'>Task ${task.id}: ${task.title}</h3>
+                <div style='display:flex; gap:.5rem; flex-wrap:wrap;'>
+                  <a class='link-button' href='/${lab}/tasks/${task.id}/'>Open Task</a>
+                  <button class='secondary' data-run-id='${task.id}'>Run task</button>
+                </div>
+                <pre id='run-${task.id}' class='mono' style='display:none; margin-top:.7rem;'></pre>
+              </article>
+            `
+          )
+          .join("");
+
+        taskGrid.querySelectorAll("button[data-run-id]").forEach((button) => {
+          button.addEventListener("click", async () => {
+            const taskId = button.getAttribute("data-run-id");
+            const outputEl = document.getElementById(`run-${taskId}`);
+            if (!taskId || !outputEl) return;
+            outputEl.style.display = "block";
+            outputEl.textContent = "Running task...";
+            try {
+              const runResponse = await fetch(`${apiBase}/api/labs/${lab}/tasks/${taskId}/run`, {
+                method: "POST"
+              });
+              const runPayload = await runResponse.json();
+              outputEl.textContent = [
+                `ok: ${runPayload.ok}`,
+                `exit_code: ${runPayload.exit_code}`,
+                `marker_complete: ${runPayload.marker_complete}`,
+                "",
+                "stdout:",
+                runPayload.stdout || "",
+                "",
+                "stderr:",
+                runPayload.stderr || ""
+              ].join("\n");
+            } catch (error) {
+              outputEl.textContent = `Run failed: ${error.message}`;
+            }
+          });
+        });
+      } catch (error) {
+        taskGrid.innerHTML = `<p class='muted'>Failed to load lab: ${error.message}</p>`;
+      }
+    }
+
+    loadLab();
+  </script>
+</BaseLayout>

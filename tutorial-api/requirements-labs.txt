@@ -1,0 +1,19 @@
+# Shared runtime dependencies required by lab scripts
+python-dotenv
+openai
+langchain
+langchain-core
+langchain-openai
+langchain-community
+langchain-huggingface
+langchain-text-splitters
+langgraph
+langchain-mcp-adapters
+mcp
+ddgs
+beautifulsoup4
+numpy
+scikit-learn
+pydantic-settings
+chromadb
+sentence-transformers

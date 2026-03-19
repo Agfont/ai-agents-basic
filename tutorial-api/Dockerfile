@@ -1,4 +1,4 @@
-FROM python:3.12-slim AS builder
+FROM python:3.14-slim AS builder
 
 ENV VIRTUAL_ENV=/opt/venv \
     PATH="/opt/venv/bin:$PATH" \
@@ -14,7 +14,7 @@ RUN python -m venv "$VIRTUAL_ENV"
 RUN pip install --upgrade pip
 RUN pip install -r /tmp/requirements-api.txt -r /tmp/requirements-labs.txt
 
-FROM python:3.12-slim AS runtime
+FROM python:3.14-slim AS runtime
 
 ENV VIRTUAL_ENV=/opt/venv \
     PATH="/opt/venv/bin:$PATH" \

@@ -1,0 +1,78 @@
+🚀 Task 5: Complete RAG Pipeline
+==================================================
+🌐 Using Chroma server at chromadb:8000
+✅ All components loaded
+
+📚 Database has 19 chunks ready
+
+📝 Question: 'Can I bring my dog to the office?'
+--------------------------------------------------
+1️⃣ RETRIEVE: Converting to embedding...
+   ✅ Retrieved 3 relevant chunks
+      - pet-policy.md (policies)
+      - pet-policy.md (policies)
+      - pet-policy.md (policies)
+
+2️⃣ AUGMENT: Building context...
+   ✅ Context prepared with retrieved documents
+
+3️⃣ GENERATE: Creating answer...
+
+==================================================
+💬 ANSWER:
+Yes, you can bring your dog to the office on Fridays, designated as "Furry Fridays," provided your dog is well-behaved, up-to-date on vaccinations, and has no history of aggression. You must also register your pet with HR and provide vaccination records before bringing them to the office.
+
+📎 Sources: pet-policy.md
+==================================================
+
+📝 Question: 'How many vacation days do I get?'
+--------------------------------------------------
+1️⃣ RETRIEVE: Converting to embedding...
+   ✅ Retrieved 3 relevant chunks
+      - vacation.md (policies)
+      - vacation.md (policies)
+      - vacation.md (policies)
+
+2️⃣ AUGMENT: Building context...
+   ✅ Context prepared with retrieved documents
+
+3️⃣ GENERATE: Creating answer...
+
+==================================================
+💬 ANSWER:
+You receive 20 days of paid vacation per year.
+
+📎 Sources: vacation.md
+==================================================
+
+📝 Question: 'What is the remote work policy?'
+--------------------------------------------------
+1️⃣ RETRIEVE: Converting to embedding...
+   ✅ Retrieved 3 relevant chunks
+      - remote-work-policy.md (policies)
+      - remote-work-policy.md (policies)
+      - remote-work-policy.md (policies)
+
+2️⃣ AUGMENT: Building context...
+   ✅ Context prepared with retrieved documents
+
+3️⃣ GENERATE: Creating answer...
+
+==================================================
+💬 ANSWER:
+The remote work policy is outlined in the TechCorp Remote Work Policy and Work From Home Guidelines, which specify that employees can manage their schedules as long as they meet their deliverables. The company provides a laptop and necessary software licenses, and employees are responsible for maintaining a secure home network with password-protected WiFi. All work must be conducted on company-provided equipment, and the use of VPN is mandatory when accessing company resources.
+
+📎 Sources: remote-work-policy.md
+==================================================
+
+==================================================
+🎉 RAG Pipeline Complete!
+   - Retrieval: Semantic search working
+   - Augmentation: Context injection ready
+   - Generation: LLM producing answers
+   - Citations: Sources included
+==================================================
+
+🎯 You've built a complete RAG system - from search to answers!
+
+✅ Task 5 completed!

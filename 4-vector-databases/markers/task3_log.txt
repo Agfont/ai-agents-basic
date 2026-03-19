@@ -1,0 +1,37 @@
+🗄️ Task 3: Building Vector Store with ChromaDB
+=======================================================
+✅ Embedding model loaded
+📚 Processing 5 documents...
+✂️ Created 5 chunks
+
+🔨 Building ChromaDB vector store...
+🌐 Using Chroma server at chromadb:8000
+✅ Vector store created with 5 vectors
+
+🔍 Testing Vector Store:
+----------------------------------------
+
+📝 Query: 'Can I work from home?'
+✨ Best match: Remote Work Policy: Employees can work from home up to 3 days per week.
+        VPN access required....
+   Source: handbook_section_1
+
+📝 Query: 'What's the dress code for Friday?'
+✨ Best match: Dress Code: Business casual Monday-Thursday. Casual Fridays allow jeans.
+        Client meetings req...
+   Source: handbook_section_5
+
+📝 Query: 'How many vacation days do I get?'
+✨ Best match: Vacation Policy: 15 days PTO for first year, 20 days after 2 years.
+        Sick leave separate - 10...
+   Source: handbook_section_3
+
+💡 What We Built:
+----------------------------------------
+• Production-ready vector database
+• Semantic search capability
+• Metadata for filtering
+• Persistent storage support
+• Ready for RAG applications!
+
+✅ Task 3 completed! Vector store built successfully.

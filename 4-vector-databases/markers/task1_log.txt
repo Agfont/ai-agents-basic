@@ -1,0 +1,10 @@
+Query: 'forgot my password'
+
+Results (score > 0.3 = relevant):
+✅ [0.56] Password recovery: Use the 'Reset Password' link on login page
+   [0.07] Vacation policy: Request time off 2 weeks in advance
+✅ [0.31] Account security: Enable two-factor authentication
+✅ [0.60] Login help: Contact IT if you cannot access your account
+
+💡 Notice: Found 'Password recovery' and 'Login help'
+   Even though query didn't contain those exact words!

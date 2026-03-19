@@ -1,0 +1,41 @@
+📄 Task 2: Smart Document Chunking
+=======================================================
+📋 Original Document Length: 1607 characters
+----------------------------------------
+
+✂️ Chunking Results:
+• Created 5 chunks
+• Chunk size: ~500 characters
+• Overlap: 100 characters
+
+📄 Chunk 1 (430 chars):
+----------------------------------------
+TechDocs Employee Handbook
+
+    Chapter 1: Remote Work Policy
+
+    Our company embraces flexible work arrangements to support work-life balance.
+    Employees are permitted to work remotely up to 3 da...
+
+📄 Chunk 2 (337 chars):
+----------------------------------------
+To work remotely, employees must have a suitable home office setup with reliable
+    internet connection, appropriate workspace, and necessary equipment. The company
+    provides a one-time stipend of...
+
+📄 Chunk 3 (339 chars):
+----------------------------------------
+Chapter 2: Communication Guidelines
+
+    Effective communication is essential for remote work success. All employees must
+    be available during core hours (10 AM - 3 PM in their local timezone) for ...
+
+
+💡 Why Smart Chunking Matters:
+----------------------------------------
+• Preserves sentence boundaries
+• Maintains context with overlap
+• Optimal for embedding models
+• Improves retrieval accuracy by 40%!
+
+✅ Task 2 completed! Document chunking mastered.

@@ -1,0 +1,45 @@
+📝 Task 4: Prompt Engineering
+==================================================
+✅ OpenAI client ready
+📋 System Prompt:
+----------------------------------------
+You are TechCorp's helpful AI assistant.
+Answer ONLY based on the provided context.
+If the answer is not in the context, say: 'I don't have that information in the provided documents.'
+Be concise and accurate.
+
+📋 User Prompt (with context):
+----------------------------------------
+
+Context from TechCorp documents:
+
+[Document 1]
+TechCorp allows employees to work remotely up to 3 days per week. Core hours are 10 AM to 3 PM.
+
+[Document 2]
+Remote work arrangements must be approved by your manager and documented with HR.
+
+[Document 3]
+VPN is mandatory when accessing company resources from home.
+
+
+
+Question: How many days can I work from home?
+
+Answer:
+
+🤖 Generated Answer:
+----------------------------------------
+You can work from home up to 3 days per week.
+
+==================================================
+🎉 Prompt Engineering Complete!
+   - System prompt: Context-aware
+   - User prompt: Structured with context
+   - Answer: Based on provided documents
+   - Ready for complete RAG pipeline!
+==================================================
+
+💡 The RAG prompt formula ensures accurate, context-based answers!
+
+✅ Task 4 completed!

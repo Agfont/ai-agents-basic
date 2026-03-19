@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - chromadb_data:/chroma/chroma
+      - chromadb_data:/data
     restart: unless-stopped
 
   tutorial-api:

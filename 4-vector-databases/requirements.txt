@@ -1,7 +1,0 @@
-sentence-transformers
-langchain-community
-langchain-huggingface
-langchain>=1.2.7
-chromadb
-numpy
-pydantic-settings

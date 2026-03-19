@@ -7,7 +7,6 @@ Build a complete semantic search system that understands meaning!
 import os
 import tempfile
 from contextlib import nullcontext
-from typing import List
 import chromadb
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings

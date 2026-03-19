@@ -6,7 +6,6 @@ Verify that the LangChain lab environment is properly configured.
 
 import sys
 import os
-import subprocess
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -40,7 +39,6 @@ def verify_environment():
         ('openai', 'OpenAI SDK'),
         ('langchain', 'LangChain Core'),
         ('langchain_openai', 'LangChain OpenAI'),
-        ('pydantic', 'Data Validation')
     ]
 
     missing_packages = []

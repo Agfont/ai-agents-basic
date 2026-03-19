@@ -8,7 +8,6 @@ Learning Goal: Master zero-shot prompting for immediate AI responses.
 
 import os
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 from tee_loger import setup_log
 

@@ -5,7 +5,6 @@ Learn how to split documents intelligently for vector embedding.
 """
 
 import os
-from typing import List
 from dotenv import load_dotenv
 from tee_loger import setup_log
 

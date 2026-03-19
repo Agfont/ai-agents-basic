@@ -151,14 +151,15 @@ def test_vector_operations():
 
         embeddings = model.encode(docs)
 
-        # Test similarity calculation
-        from sklearn.metrics.pairwise import cosine_similarity
+        # Test similarity calculation with NumPy to avoid heavyweight sklearn dependency.
+        # cos(theta) = (a · b) / (||a|| ||b||)
+        cosine_similarity = lambda a, b: float(np.dot(a, b) / max(np.linalg.norm(a) * np.linalg.norm(b), 1e-12))
 
         # Compare first two (should be similar)
-        sim_similar = cosine_similarity([embeddings[0]], [embeddings[1]])[0][0]
+        sim_similar = cosine_similarity(embeddings[0], embeddings[1])
 
         # Compare first and third (should be different)
-        sim_different = cosine_similarity([embeddings[0]], [embeddings[2]])[0][0]
+        sim_different = cosine_similarity(embeddings[0], embeddings[2])
 
         print(f"✅ Vector similarity test:")
         print(f"   Similar docs similarity: {sim_similar:.3f}")

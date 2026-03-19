@@ -6,9 +6,11 @@ Create a production-ready vector database using LangChain and ChromaDB.
 
 import os
 import tempfile
+from contextlib import nullcontext
 from typing import List
 from dotenv import load_dotenv
 from tee_loger import setup_log
+import chromadb
 
 load_dotenv()
 setup_log("markers/task3_log.txt")
@@ -82,18 +84,28 @@ def main():
     # Create vector store
     print("\n🔨 Building ChromaDB vector store...")
 
-    # Use temp directory for persistence
-    with tempfile.TemporaryDirectory() as temp_dir:
-        vectorstore = Chroma.from_documents(
-            documents=splits,
-            embedding=embeddings,
-            persist_directory=temp_dir,
-            collection_name="techdocs"
-        )
+    chroma_host = os.getenv("CHROMA_HOST")
+    chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+    context = nullcontext(None)
+    create_kwargs = {
+        "documents": splits,
+        "embedding": embeddings,
+        "collection_name": "techdocs",
+    }
 
+    if chroma_host:
+        print(f"🌐 Using Chroma server at {chroma_host}:{chroma_port}")
+        create_kwargs["client"] = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+    else:
+        context = tempfile.TemporaryDirectory()
+
+    with context as temp_dir:
+        if temp_dir is not None:
+            create_kwargs["persist_directory"] = temp_dir
+
+        vectorstore = Chroma.from_documents(**create_kwargs)
         print(f"✅ Vector store created with {vectorstore._collection.count()} vectors")
 
-        # Test the vector store with sample queries
         print("\n🔍 Testing Vector Store:")
         print("-" * 40)
 

@@ -10,6 +10,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+def _docs_dir_path() -> str:
+    return os.getenv("TECHCORP_DOCS_DIR", "techcorp-docs")
+
 def check_virtual_environment():
     """Check if virtual environment is active"""
     if hasattr(sys, 'real_prefix') or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix):
@@ -56,10 +60,11 @@ def check_openai_config():
 
 def check_documents():
     """Check if TechCorp documents exist"""
-    doc_dir = "techcorp-docs"
+    doc_dir = _docs_dir_path()
     if os.path.exists(doc_dir):
         doc_count = sum(1 for root, dirs, files in os.walk(doc_dir) for file in files if file.endswith('.md'))
         print(f"✅ TechCorp documents found: {doc_count} files")
+        print(f"   Path: {doc_dir}")
         return True
     else:
         print(f"⚠️  TechCorp documents not found at {doc_dir}")

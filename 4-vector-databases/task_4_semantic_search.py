@@ -6,7 +6,9 @@ Build a complete semantic search system that understands meaning!
 
 import os
 import tempfile
+from contextlib import nullcontext
 from typing import List
+import chromadb
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.documents import Document
@@ -49,14 +51,26 @@ def build_search_engine():
 
     print(f"📚 Loading {len(documents)} documents into vector store...")
 
-    # Create vector store
-    with tempfile.TemporaryDirectory() as temp_dir:
-        vectorstore = Chroma.from_documents(
-            documents=documents,
-            embedding=embeddings,
-            persist_directory=temp_dir
-        )
+    chroma_host = os.getenv("CHROMA_HOST")
+    chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+    context = nullcontext(None)
+    create_kwargs = {
+        "documents": documents,
+        "embedding": embeddings,
+    }
 
+    if chroma_host:
+        print(f"🌐 Using Chroma server at {chroma_host}:{chroma_port}")
+        create_kwargs["client"] = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+        create_kwargs["collection_name"] = "techdocs_search"
+    else:
+        context = tempfile.TemporaryDirectory()
+
+    with context as temp_dir:
+        if temp_dir is not None:
+            create_kwargs["persist_directory"] = temp_dir
+
+        vectorstore = Chroma.from_documents(**create_kwargs)
         print("✅ Vector store ready!\n")
 
         # TODO 1: Set search query

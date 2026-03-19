@@ -23,6 +23,7 @@ ENV VIRTUAL_ENV=/opt/venv \
 WORKDIR /app
 
 RUN useradd --create-home --shell /usr/sbin/nologin appuser
+RUN mkdir -p /app/techcorp-docs
 
 COPY --from=builder --chown=appuser:appuser /opt/venv /opt/venv
 COPY --chown=appuser:appuser tutorial-api /app/tutorial-api

@@ -18,7 +18,14 @@ print("🚀 Task 5: Complete RAG Pipeline")
 print("=" * 50)
 
 # Initialize all components
-client_db = chromadb.PersistentClient(path="./chroma_db")
+chroma_host = os.getenv("CHROMA_HOST")
+chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+if chroma_host:
+    client_db = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+    print(f"🌐 Using Chroma server at {chroma_host}:{chroma_port}")
+else:
+    client_db = chromadb.PersistentClient(path="./chroma_db")
+    print("💾 Using local persistent Chroma at ./chroma_db")
 collection = client_db.get_or_create_collection("techcorp_rag")
 model = SentenceTransformer("all-MiniLM-L6-v2")
 

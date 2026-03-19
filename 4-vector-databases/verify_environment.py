@@ -9,6 +9,14 @@ import sys
 import tempfile
 import shutil
 
+
+def _create_chroma_client(chromadb):
+    chroma_host = os.getenv("CHROMA_HOST")
+    chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+    if chroma_host:
+        return chromadb.HttpClient(host=chroma_host, port=chroma_port), f"server {chroma_host}:{chroma_port}"
+    return chromadb.PersistentClient(path="./chroma_db"), "local persistent ./chroma_db"
+
 def check_virtual_environment():
     """Check if virtual environment is active"""
     if hasattr(sys, 'real_prefix') or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix):
@@ -24,11 +32,9 @@ def check_chromadb_import():
         import chromadb
         print(f"✅ ChromaDB available (version: {chromadb.__version__})")
 
-        # Test basic client creation
-        with tempfile.TemporaryDirectory() as temp_dir:
-            client = chromadb.PersistentClient(path=temp_dir)
-            collection = client.create_collection("test")
-            print("✅ ChromaDB client and collection creation successful")
+        client, mode = _create_chroma_client(chromadb)
+        collection = client.get_or_create_collection("env_check_test")
+        print(f"✅ ChromaDB client and collection creation successful ({mode})")
 
         return True
     except ImportError as e:
@@ -73,21 +79,35 @@ def check_langchain_integration():
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         test_texts = ["Test document one", "Test document two"]
 
-        with tempfile.TemporaryDirectory() as temp_dir:
+        chroma_host = os.getenv("CHROMA_HOST")
+        chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+
+        if chroma_host:
+            import chromadb
+
+            client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
             vectorstore = Chroma.from_texts(
                 texts=test_texts,
                 embedding=embeddings,
-                persist_directory=temp_dir
+                client=client,
+                collection_name="langchain_env_check"
             )
+        else:
+            with tempfile.TemporaryDirectory() as temp_dir:
+                vectorstore = Chroma.from_texts(
+                    texts=test_texts,
+                    embedding=embeddings,
+                    persist_directory=temp_dir
+                )
 
-            # Test search
-            results = vectorstore.similarity_search("Test document", k=1)
-            if results:
-                print("✅ LangChain-ChromaDB integration working")
-                return True
-            else:
-                print("❌ LangChain-ChromaDB search test failed")
-                return False
+        # Test search
+        results = vectorstore.similarity_search("Test document", k=1)
+        if results:
+            print("✅ LangChain-ChromaDB integration working")
+            return True
+        else:
+            print("❌ LangChain-ChromaDB search test failed")
+            return False
 
     except ImportError as e:
         print(f"❌ LangChain integration import failed: {e}")

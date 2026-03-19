@@ -18,11 +18,22 @@ print("📄 Task 2: Smart Document Processing")
 print("=" * 50)
 
 # Initialize components from Task 1
-client = chromadb.PersistentClient(path="./chroma_db")
+chroma_host = os.getenv("CHROMA_HOST")
+chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+if chroma_host:
+    client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+    print(f"🌐 Using Chroma server at {chroma_host}:{chroma_port}")
+else:
+    client = chromadb.PersistentClient(path="./chroma_db")
+    print("💾 Using local persistent Chroma at ./chroma_db")
 collection = client.get_or_create_collection("techcorp_rag")
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 print("✅ Loaded vector store and embedding model")
+
+
+def docs_dir() -> Path:
+    return Path(os.getenv("TECHCORP_DOCS_DIR", "techcorp-docs"))
 
 def smart_chunk_document(text, overlap_ratio=0.2):
     """
@@ -56,9 +67,17 @@ def smart_chunk_document(text, overlap_ratio=0.2):
     return chunks
 
 # Process documents
-doc_dir = Path("techcorp-docs")
+doc_dir = docs_dir()
+if not doc_dir.exists():
+    raise FileNotFoundError(
+        f"TechCorp docs directory not found at '{doc_dir}'. "
+        "Set TECHCORP_DOCS_DIR or mount the folder in Docker."
+    )
+
 total_chunks = 0
 docs_processed = 0
+
+print(f"📁 Using docs directory: {doc_dir}")
 
 for category_dir in doc_dir.iterdir():
     if category_dir.is_dir():

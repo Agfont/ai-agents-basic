@@ -17,8 +17,15 @@ print("🔧 Task 1: Setting up Vector Store for RAG")
 print("=" * 50)
 
 # TODO 1: Initialize ChromaDB client for persistent storage
-# Hint: Use chromadb.PersistentClient(path="./chroma_db")
-client = chromadb.PersistentClient(path="./chroma_db")  # Replace ___ with "./chroma_db"
+# Hint: Use CHROMA_HOST/CHROMA_PORT for server mode, local path fallback otherwise.
+chroma_host = os.getenv("CHROMA_HOST")
+chroma_port = int(os.getenv("CHROMA_PORT", "8000"))
+if chroma_host:
+    client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+    print(f"🌐 Using Chroma server at {chroma_host}:{chroma_port}")
+else:
+    client = chromadb.PersistentClient(path="./chroma_db")
+    print("💾 Using local persistent Chroma at ./chroma_db")
 
 print("✅ ChromaDB client initialized")
 

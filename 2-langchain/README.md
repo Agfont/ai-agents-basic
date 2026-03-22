@@ -1,4 +1,4 @@
-# Lab 2: LangChain Fundamentals - Code Files
+# Lab 2: LangChain Fundamentals
 
 ## 🎯 Learning Objectives
 Master LangChain fundamentals by building flexible AI systems that can switch between providers, use templates, parse structured data, and chain operations together for TechCorp's support system.

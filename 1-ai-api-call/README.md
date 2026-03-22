@@ -1,4 +1,4 @@
-# Lab 1: AI Fundamentals - Your First AI Journey
+# Lab 1: AI Fundamentals
 
 ## 🎯 What You'll Learn
 Making your first AI API call through 5 micro-tasks - each building on the previous one, like climbing stairs one step at a time.

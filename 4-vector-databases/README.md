@@ -1,4 +1,4 @@
-# 🔍 Vector Databases & Semantic Search Lab
+# Vector Databases & Semantic Search Lab
 
 Master the technology behind modern AI search systems - from embeddings to production-ready semantic search!
 

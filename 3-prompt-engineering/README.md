@@ -1,4 +1,4 @@
-# 🎨 Prompt Engineering Lab with LangChain
+# Prompt Engineering Lab with LangChain
 
 Master the art of AI communication through hands-on prompt engineering techniques!
 

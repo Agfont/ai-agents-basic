@@ -1,4 +1,4 @@
-# 🎯 LangGraph Basics: Build Stateful AI Workflows Progressively
+# LangGraph Basics: Build Stateful AI Workflows Progressively
 
 ## Master the Fundamentals of Graph-Based AI - From Imports to Research Agent
 

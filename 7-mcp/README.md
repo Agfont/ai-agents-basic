@@ -1,4 +1,4 @@
-# 🎯 Advanced MCP Concepts: Extend LangGraph with Model Context Protocol
+# Advanced MCP Concepts: Extend LangGraph with Model Context Protocol
 
 ## Master External Tool Integration with MCP - The USB Port for AI
 

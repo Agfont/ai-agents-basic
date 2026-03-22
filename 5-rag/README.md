@@ -1,4 +1,4 @@
-# 🚀 RAG Lab: From Search to Answers
+# RAG Lab: From Search to Answers
 
 ## Transform Your Semantic Search into an AI Q&A System
 

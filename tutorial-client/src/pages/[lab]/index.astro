@@ -15,64 +15,64 @@ const LAB_OVERVIEWS = {
   "1-ai-api-call": {
     about: "Learn the end-to-end flow of a first AI integration: import SDK, create client, call chat completions, parse response, and track token cost.",
     concepts: [
-      "OpenAI client setup and environment variables",
-      "Chat completions request structure",
-      "Response object navigation",
-      "Token usage and cost awareness"
+      "OpenAI Python SDK",
+      "python-dotenv",
+      "Chat Completions API",
+      "Token usage metrics"
     ]
   },
   "2-langchain": {
     about: "Learn how LangChain reduces boilerplate and composes prompts, models, and parsers into reusable chains.",
     concepts: [
-      "Provider abstraction across model vendors",
-      "PromptTemplate variables and reuse",
-      "Output parsing into structured data",
-      "Pipe operator for chain composition"
+      "LangChain",
+      "LangChain OpenAI",
+      "PromptTemplate",
+      "Output Parsers"
     ]
   },
   "3-prompt-engineering": {
     about: "Practice the core prompting strategies that improve quality and consistency of LLM outputs.",
     concepts: [
-      "Zero-shot prompting",
-      "One-shot and few-shot pattern teaching",
-      "Chain-of-thought reasoning",
-      "Technique comparison by task type"
+      "LangChain",
+      "LangChain OpenAI",
+      "Prompt templates",
+      "Prompting techniques (zero/one/few-shot, CoT)"
     ]
   },
   "4-vector-databases": {
     about: "Build semantic search by embedding documents, storing vectors, and retrieving results by meaning instead of exact keywords.",
     concepts: [
-      "Text embeddings and semantic similarity",
-      "Document chunking with overlap",
-      "Vector store fundamentals with ChromaDB",
-      "Top-k retrieval and relevance thresholds"
+      "Sentence Transformers",
+      "HuggingFace Embeddings",
+      "ChromaDB",
+      "LangChain Text Splitters"
     ]
   },
   "5-rag": {
     about: "Connect retrieval to generation to produce grounded answers from your own document corpus.",
     concepts: [
-      "RAG pipeline architecture",
-      "Context retrieval and prompt augmentation",
-      "LLM answer generation from context",
-      "Source-aware and transparent responses"
+      "ChromaDB",
+      "Sentence Transformers",
+      "LangChain",
+      "OpenAI Chat Models"
     ]
   },
   "6-langgraph": {
     about: "Create stateful AI workflows with graph nodes, edges, and routing logic for multi-step execution.",
     concepts: [
-      "StateGraph and TypedDict state",
-      "Node-based state transformations",
-      "Conditional routing",
-      "Tool-enabled agent workflows"
+      "LangGraph",
+      "LangChain",
+      "OpenAI Chat Models",
+      "DuckDuckGo Search (ddgs)"
     ]
   },
   "7-mcp": {
     about: "Integrate external tools through MCP and orchestrate single or multiple MCP servers from agent workflows.",
     concepts: [
-      "MCP server and tool model",
-      "MCP tool naming and invocation",
-      "LangGraph + MCP integration",
-      "Multi-server routing and orchestration"
+      "MCP Python SDK",
+      "FastMCP",
+      "LangChain MCP Adapters",
+      "LangGraph"
     ]
   }
 };
@@ -154,8 +154,7 @@ const currentTaskSummaries = LAB_TASK_SUMMARIES[lab] || [
     <article class="card" style="margin-bottom:.9rem;">
       <h3 style="margin-top:0;">Lab Overview</h3>
       <p class="muted" style="margin-top:.2rem;">{currentLabInfo.about}</p>
-      <h4 style="margin:.8rem 0 .3rem;">Main Concepts</h4>
-      <div class="chips" style="margin-top:.5rem;">
+      <div class="chips">
         {currentLabInfo.concepts.map((concept) => (
           <span class="chip">{concept}</span>
         ))}

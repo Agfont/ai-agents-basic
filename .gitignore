@@ -11,3 +11,6 @@ __pycache__/
 tutorial-client/node_modules/
 tutorial-client/dist/
 tutorial-client/.astro/
+
+# Pem files
+*.pem

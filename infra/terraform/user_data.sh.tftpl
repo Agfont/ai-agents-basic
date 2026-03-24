@@ -1,0 +1,66 @@
+#!/bin/bash
+set -euxo pipefail
+
+apt-get update
+apt-get install -y git python3 python3-venv python3-pip nginx
+
+cd /home/ubuntu
+if [ ! -d ai-agents-basic ]; then
+  git clone "${repo_url}" ai-agents-basic
+fi
+
+cd /home/ubuntu/ai-agents-basic
+git fetch --all
+git checkout "${repo_branch}"
+git pull --ff-only origin "${repo_branch}" || true
+
+# Ensure ubuntu can manage repo files later (e.g., uploading .env via scp).
+chown -R ubuntu:ubuntu /home/ubuntu/ai-agents-basic
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r tutorial-api/requirements.txt
+pip install -r tutorial-api/requirements-labs.txt
+pip install gunicorn
+
+cat >/etc/systemd/system/tutorial-api.service <<'EOF'
+[Unit]
+Description=Tutorial API Flask service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/ai-agents-basic/tutorial-api
+EnvironmentFile=/home/ubuntu/ai-agents-basic/.env
+ExecStart=/home/ubuntu/ai-agents-basic/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:5050 app:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+cat >/etc/nginx/sites-available/tutorial-api <<'EOF'
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://127.0.0.1:5050;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+EOF
+
+rm -f /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/tutorial-api /etc/nginx/sites-enabled/tutorial-api
+
+systemctl daemon-reload
+systemctl enable tutorial-api
+systemctl restart tutorial-api
+systemctl enable nginx
+systemctl restart nginx

@@ -71,21 +71,6 @@ Copy your local `.env` file to the instance:
 scp -i infra/terraform/ai-agents-key.pem .env "ubuntu@$PUBLIC_IP:/home/ubuntu/ai-agents-basic/.env"
 ```
 
-Restart and verify the API service:
-
-```bash
-ssh -i infra/terraform/ai-agents-key.pem "ubuntu@$PUBLIC_IP"
-sudo systemctl restart tutorial-api
-sudo systemctl --no-pager --full status tutorial-api | sed -n '1,20p'
-curl -f http://127.0.0.1:5050/api/health
-```
-
-Exit SSH and verify from your machine:
-
-```bash
-curl -f "http://$PUBLIC_IP/api/health"
-```
-
 ## Important notes
 
 - Create `/home/ubuntu/ai-agents-basic/.env` on the instance with required variables (`OPENAI_API_KEY`, `OPENAI_API_BASE`, etc.).

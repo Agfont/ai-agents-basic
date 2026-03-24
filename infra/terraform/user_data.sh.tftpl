@@ -59,6 +59,10 @@ EOF
 rm -f /etc/nginx/sites-enabled/default
 ln -sf /etc/nginx/sites-available/tutorial-api /etc/nginx/sites-enabled/tutorial-api
 
+# Ensure env file path exists on first boot; real values can be uploaded later.
+touch /home/ubuntu/ai-agents-basic/.env
+chown ubuntu:ubuntu /home/ubuntu/ai-agents-basic/.env
+
 systemctl daemon-reload
 systemctl enable tutorial-api
 systemctl restart tutorial-api

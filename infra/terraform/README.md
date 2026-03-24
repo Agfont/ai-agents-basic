@@ -38,7 +38,8 @@ aws sso login --profile <your-profile-name>
 cd infra/terraform
 cp terraform.tfvars.example terraform.tfvars
 
-curl https://checkip.amazonaws.com
+curl https://checkip.amazonaws.com # IPv4
+curl https://checkip.global.api.aws  # IPv6
 # edit terraform.tfvars with your values
 
 terraform init
@@ -51,6 +52,7 @@ After apply:
 ```bash
 PUBLIC_IP=$(terraform output -raw public_ip)
 curl "http://$PUBLIC_IP/api/health" 
+# terraform apply -replace=aws_instance.your_instance_name to recreate the instance if needed
 ```
 
 ## First-time app env setup on EC2

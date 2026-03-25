@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 apt-get update
-apt-get install -y git python3 python3-venv python3-pip nginx
+apt-get install -y git python3 python3-venv python3-pip nginx certbot python3-certbot-nginx
 
 cd /home/ubuntu
 if [ ! -d ai-agents-basic ]; then
@@ -44,14 +44,19 @@ EOF
 
 cat >/etc/nginx/sites-available/tutorial-api <<'EOF'
 server {
-    listen 80;
-    server_name _;
+  listen 80;
+  server_name ${api_domain != "" ? api_domain : "_"};
+
+  location /.well-known/acme-challenge/ {
+    root /var/www/html;
+  }
 
     location / {
         proxy_pass http://127.0.0.1:5050;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto http;
     }
 }
 EOF
@@ -68,3 +73,23 @@ systemctl enable tutorial-api
 systemctl restart tutorial-api
 systemctl enable nginx
 systemctl restart nginx
+
+# If domain and email are provided, request a trusted cert and configure HTTPS redirect.
+if [ -n "${api_domain}" ] && [ -n "${letsencrypt_email}" ]; then
+  TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600" || true)
+  INSTANCE_PUBLIC_IP=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-ipv4 || true)
+  DOMAIN_IP=$(dig +short A ${api_domain} | tail -n1 || true)
+
+  if [ -n "$INSTANCE_PUBLIC_IP" ] && [ "$INSTANCE_PUBLIC_IP" = "$DOMAIN_IP" ]; then
+    certbot --nginx \
+      --non-interactive \
+      --agree-tos \
+      --email "${letsencrypt_email}" \
+      --domains "${api_domain}" \
+      --redirect \
+      --keep-until-expiring
+    systemctl reload nginx
+  else
+    echo "Skipping Let's Encrypt issuance: ${api_domain} does not resolve to this EC2 public IP yet."
+  fi
+fi

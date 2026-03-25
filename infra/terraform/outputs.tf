@@ -3,12 +3,12 @@ output "instance_id" {
   value       = aws_instance.api.id
 }
 
-output "public_ip" {
-  description = "EC2 public IP"
-  value       = aws_instance.api.public_ip
+output "elastic_ip" {
+  description = "Elastic IP attached to EC2"
+  value       = aws_eip.api.public_ip
 }
 
 output "api_base_url" {
   description = "Base URL to call the API"
-  value       = "http://${aws_instance.api.public_ip}"
+  value       = "https://${var.api_domain}"
 }

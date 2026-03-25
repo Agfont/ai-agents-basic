@@ -64,7 +64,11 @@ variable "repo_branch" {
 }
 
 variable "api_domain" {
-  description = "Optional DNS domain for the API"
+  description = "DNS domain for the API (for example, example.com)"
   type        = string
-  default     = ""
+}
+
+variable "letsencrypt_email" {
+  description = "Email used by Let's Encrypt registration"
+  type        = string
 }

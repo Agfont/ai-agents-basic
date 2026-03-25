@@ -10,3 +10,7 @@ ec2_key_name = "your-keypair-name"
 # Repo used by cloud-init bootstrapping.
 repo_url    = "https://github.com/<owner>/<repo>.git"
 repo_branch = "main"
+
+# For trusted HTTPS (Let's Encrypt)
+api_domain        = "api.example.com"
+letsencrypt_email = "admin@example.com"

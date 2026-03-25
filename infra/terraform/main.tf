@@ -42,7 +42,7 @@ resource "aws_internet_gateway" "main" {
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidr
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   availability_zone       = data.aws_availability_zones.available.names[0]
 
   tags = {
@@ -74,9 +74,17 @@ resource "aws_security_group" "api" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
-    description = "HTTP"
+    description = "HTTP (Lets Encrypt challenge and redirect)"
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "HTTPS"
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -132,13 +140,16 @@ resource "aws_instance" "api" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.public.id
+  associate_public_ip_address = false
   vpc_security_group_ids = [aws_security_group.api.id]
   key_name               = var.ec2_key_name
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
 
   user_data = templatefile("${path.module}/user_data.sh.tftpl", {
-    repo_url    = var.repo_url
-    repo_branch = var.repo_branch
+    repo_url          = var.repo_url
+    repo_branch       = var.repo_branch
+    api_domain        = var.api_domain
+    letsencrypt_email = var.letsencrypt_email
   })
 
   root_block_device {
@@ -148,5 +159,16 @@ resource "aws_instance" "api" {
 
   tags = {
     Name = "${local.name_prefix}-api"
+  }
+}
+
+resource "aws_eip" "api" {
+  domain   = "vpc"
+  instance = aws_instance.api.id
+
+  depends_on = [aws_internet_gateway.main]
+
+  tags = {
+    Name = "${local.name_prefix}-api-eip"
   }
 }

@@ -70,25 +70,17 @@ After apply:
 ```bash
 API_BASE_URL=$(terraform output -raw api_base_url)
 curl "$API_BASE_URL/api/health"
-# terraform apply -replace=aws_instance.your_instance_name to recreate the instance if needed
 ```
 
 If `api_domain` and `letsencrypt_email` are set and DNS points to the Elastic IP, cloud-init will request a trusted TLS cert and enable HTTPS redirect automatically.
-
-Then verify:
-
-```bash
-API_BASE_URL=$(terraform output -raw api_base_url)
-curl "$API_BASE_URL/api/health"
-```
 
 ## First-time app env setup on EC2
 
 SSH into the instance:
 
 ```bash
-cd ../..
 ELASTIC_IP=$(terraform output -raw elastic_ip)
+cd ../..
 ssh -i infra/terraform/ai-agents-key.pem "ubuntu@$ELASTIC_IP"
 ```
 

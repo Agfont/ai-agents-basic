@@ -2,15 +2,15 @@ aws_region       = "us-east-1"
 project_name     = "ai-agents-basic"
 environment      = "dev"
 instance_type    = "t3.micro"
-allowed_ssh_cidr = "203.0.113.10/32"
+allowed_ssh_cidr = "0.0.0.0/0"
 
 # Optional: set null to disable key pair association.
 ec2_key_name = "your-keypair-name"
 
 # Repo used by cloud-init bootstrapping.
-repo_url    = "https://github.com/<owner>/<repo>.git"
+repo_url    = "https://github.com/Agfont/ai-agents-basic"
 repo_branch = "main"
 
 # For trusted HTTPS (Let's Encrypt)
-api_domain        = "api.example.com"
+api_domain        = "ai.healthymarketbr.com"
 letsencrypt_email = "admin@example.com"

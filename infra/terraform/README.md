@@ -92,7 +92,7 @@ scp -i infra/terraform/ai-agents-key.pem .env "ubuntu@$ELASTIC_IP:/home/ubuntu/a
 
 ## Important notes
 
-- Create `/home/ubuntu/ai-agents-basic/.env` on the instance with required variables (`OPENAI_API_KEY`, `OPENAI_API_BASE`, etc.).
+- Create `/home/ubuntu/ai-agents-basic/.env` on the instance with required variables (`OPENAI_API_KEY`, `OPENAI_API_BASE`, `TECHCORP_DOCS_DIR`,etc.).
 - For production, restrict `allowed_ssh_cidr` to your office IP/VPN CIDR.
 - This setup keeps complexity low while enabling trusted HTTPS on EC2 with your own domain.
 
